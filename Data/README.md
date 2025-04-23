@@ -8,6 +8,11 @@ This folder contains preprocessed and class-imbalanced versions of three text-cl
 
 The following described preprocessing that was performed can be found in [`SyntheticDataGeneration-DatasetsPreprocessing.ipynb`](https://github.com/RohitP123/Synthetic-Data-Generation-Techniques-Analysis/blob/main/Data/SyntheticDataGeneration_DatasetsPreprocessing.ipynb)
 
+Original Datasets can be found at:
+1. [IMDB Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews?resource=download)
+2. [ISOT Fake News](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
+3. [Hate Speech Detection](https://github.com/Vicomtech/hate-speech-dataset/tree/master)
+
 ---
 
 ## 1. IMDB Movie Reviews

@@ -2,36 +2,20 @@
 
 This folder contains preprocessed and class-imbalanced versions of three text-classification datasets:
 
-1. **IMDB Movie Reviews (Sentiment Analysis)**
-2. **ISOT Fake News Headlines (Fake News Detection)**
-3. **Hate Speech Detection**
+1. **ISOT Fake News Headlines (Fake News Detection)**
+2. **Hate Speech Detection**
+3. **Emotion Detection**
 
 The following described preprocessing that was performed can be found in [`SyntheticDataGeneration-DatasetsPreprocessing.ipynb`](https://github.com/RohitP123/Synthetic-Data-Generation-Techniques-Analysis/blob/main/Data/SyntheticDataGeneration_DatasetsPreprocessing.ipynb)
 
 Original Datasets can be found at:
-1. [IMDB Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews?resource=download)
-2. [ISOT Fake News](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
-3. [Hate Speech Detection](https://github.com/Vicomtech/hate-speech-dataset/tree/master)
+1. [ISOT Fake News](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
+2. [Hate Speech Detection](https://github.com/Vicomtech/hate-speech-dataset/tree/master)
+3. [Emotion Detection](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp)
 
 ---
 
-## 1. IMDB Movie Reviews
-
-- **Source file**: `IMDB-Dataset.csv`  
-  Contains two columns:
-  - `review`: movie review text  
-  - `sentiment`: "positive" or "negative"
-
-- **Preprocessing**:
-  1. Loaded the CSV
-  2. Split into positive and negative subsets (each contained 25000 data points).
-  3. Created two artificially imbalanced datasets:
-     - **Positive-dominant** (`imdb_unbalanced_positive_dominant.csv`): 20% of the original positive reviews + 100% of the negative reviews.
-     - **Negative-dominant** (`imdb_unbalanced_negative_dominant.csv`): 100% of the original positive reviews + 20% of the negative reviews.
-
----
-
-## 2. ISOT Fake News Headlines
+## 1. ISOT Fake News Headlines
 
 - **Source files**: (in ISOT folder)  
   - `Fake.csv` (23481 fake news examples)  
@@ -41,13 +25,15 @@ Original Datasets can be found at:
 - **Preprocessing**:
   1. Added a binary `label` column: `0` = fake, `1` = real.
   2. Combined both csv's into a single csv keeping only title and label.
-  3. Created two imbalanced splits:
-     - **Fake-dominant** (`isot_unbalanced_fake_dominant.csv`): 100% fake + 20% real.
-     - **Real-dominant** (`isot_unbalanced_real_dominant.csv`): 20% fake + 100% real.
+  3. Downsampled to create two csv's:
+     - **Fake-dominant** (`isot_fake_dominant_0_1.csv`): 1000 fake + 200 real.
+     - **Real-dominant** (`isot_real_dominant_0_1.csv`): 200 fake + 1000 real.
+  4. Also created another 2 csv that instead of having numeric labels, it has string labels of "Fake" and "Real"
+     - Called `isot_real_dominant_real_fake.csv` and `isot_fake_dominant_real_fake.csv`
 
 ---
 
-## 3. Hate Speech Detection
+## 2. Hate Speech Detection
 
 - **Within Hate Speech Dataset Folder**
   - **Source folder**: `all_files/`  
@@ -65,10 +51,28 @@ Original Datasets can be found at:
 - **Preprocessing**:
   1. Read each `<file_id>.txt` into a `text` column keeping only `noHate` or `hate` labels.
   2. Mapped `noHate → 0`, `hate → 1`.
-  3. Data was already imbalanced (9507 noHate and 1196 hate) so created `hate_speech_unbalanced_noHate_dominant.csv` from this.
+  3. Data was already imbalanced (9507 noHate and 1196 hate) so created `hate_speech_0_1.csv` from this.
+      - Downsampled to contain 1000 noHate data points and 200 hate datapoints.
+  5. Also created a csv that contained string labels of "no hate" and "Hate" called `hate_speech_hate_nohate.csv`
+ 
+---
 
+## 3. NLP Emotion Classification Dataset
+
+- **Source file**: `train.txt`, `test.txt`, `val.txt` (after unzipping original dataset)
+  Format: text; label
+
+- **Preprocessing**:
+  1. Loaded the txt files
+  2. Combined them and extract text into a column and label into another column
+  3. There are 6 labels for emotions in this dataset (joy, sadness, anger, fear, love, surprise)
+  5. Created one artificially imbalanced datasets:
+     - `emotion_multiclass_dataset.csv`
+         - contains 100 surprise data points (minority) and 300 data points for each of the other categories. 
 
 ---
+
+
 ## Citations
 
 ```bibtex

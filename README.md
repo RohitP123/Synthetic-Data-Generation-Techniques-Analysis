@@ -19,7 +19,7 @@ Experiments are conducted on three imbalanced datasets, with evaluations focusin
 │
 ├── Experiments/ # Google Colab notebooks for reproduction
 │ ├── Traditional_Techniques_Data_Generation.ipynb # Back-translation, synonym replacement, etc.
-│ └── LLM_Prompting_Experiments.ipynb # GPT-3.5 prompting strategies
+│ └── LLMSyntheticDataGeneration.ipynb # GPT-3.5 prompting strategies
 │
 ├── README.md
 ```

@@ -7,6 +7,8 @@ Class imbalance in text classification tasks (e.g., hate speech detection, sarca
 - **Traditional augmentation methods**: Back-translation, synonym replacement, word deletion, and combinations.
 - **LLM-based techniques**: GPT-3.5 prompting strategies (class-driven, order-aware, and instruction-driven approaches).
 
+[Presentation Recording](https://www.youtube.com/watch?v=6duL4xOS1PI&ab_channel=RohitPatil)
+
 Experiments are conducted on three imbalanced datasets, with evaluations focusing on minority-class F1 scores. For further details on datasets used, refer to the [README.md](https://github.com/RohitP123/Synthetic-Data-Generation-Techniques-Analysis/blob/main/Data/README.md) in the data folder.
 
 ## Repository Structure
